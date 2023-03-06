@@ -1,16 +1,15 @@
-import React, { useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 
 import Input from '../../UI/Input';
 import classes from './MealItemForm.module.css';
 
-const MealItemForm = React.forwardRef((props, ref) => {
+const MealItemForm = (props) => {
   const [amountIsValid, setAmountIsValid] = useState(true);
   const amountInputRef = useRef();
 
   const submitHandler = (event) => {
     event.preventDefault();
 
-    // this line gives error
     const enteredAmount = amountInputRef.current.value;
     const enteredAmountNumber = +enteredAmount;
 
@@ -44,6 +43,6 @@ const MealItemForm = React.forwardRef((props, ref) => {
       {!amountIsValid && <p>Please enter a valid amount (1-5).</p>}
     </form>
   );
-});
+};
 
 export default MealItemForm;
